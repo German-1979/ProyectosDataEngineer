@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  spark_app:
+    build: .
+    container_name: spark_app
+    volumes:
+      - .:/app               # mantiene la sincronización de tu proyecto local
+    working_dir: /app
+    environment:
+      - PYSPARK_PYTHON=python
+    command: python scripts/run_all.py  # ejecuta los 3 scripts en secuencia
