@@ -14,8 +14,8 @@ spark = (
 # ===========================
 print("🔹 Leyendo datos desde capa Silver...")
 
-df_compras = spark.read.parquet("data/silver/silver_compras.parquet")
-df_detalles = spark.read.parquet("data/silver/silver_detalles.parquet")
+df_compras = spark.read.parquet("/app/data/silver/linio_silver_compras")
+df_detalles = spark.read.parquet("/app/data/silver/linio_silver_detalles")
 
 print(f"Registros df_compras: {df_compras.count()}")
 print(f"Registros df_detalles: {df_detalles.count()}")
@@ -45,11 +45,12 @@ df_fact_compras.printSchema()
 # ===========================================
 # 4️⃣ Guardar resultado en carpeta GOLD (Parquet)
 # ===========================================
-output_path = "data/gold/gold_fact_compras.parquet"
 
 try:
-    df_fact_compras.write.mode("overwrite").parquet(output_path)
-    print(f"✅ Archivo Parquet generado correctamente en: {output_path}")
+    df_fact_compras.write.mode("overwrite").parquet("/app/data/gold/fact_compras")
+
+    print("✅ Archivo Parquet generado correctamente en fact_compras")
+
 except Exception as e:
     print(f"❌ Error guardando archivo Parquet: {e}")
 

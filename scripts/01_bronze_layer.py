@@ -69,8 +69,9 @@ try:
 
 
     # ===== CREAR BRONZE EN PARQUET =====
-    df_compras.write.parquet("data/bronze/linio_bronze_compras", mode="overwrite")
-    df_detalles.write.parquet("data/bronze/linio_bronze_detalles", mode="overwrite")
+    df_compras.write.parquet("/app/data/bronze/linio_bronze_compras", mode="overwrite")
+    df_detalles.write.parquet("/app/data/bronze/linio_bronze_detalles", mode="overwrite")
+
 
     print("✅ Bronze layer creada y poblada correctamente en Parquet.")
 

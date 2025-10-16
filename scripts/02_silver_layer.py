@@ -33,7 +33,7 @@ try:
     ]
 
     df_compras = (
-        spark.read.parquet("data/bronze/linio_bronze_compras")
+        spark.read.parquet("/app/data/bronze/linio_bronze_compras")
         .select([col(c) for c in columnas_requeridas])
     )
 
@@ -138,7 +138,7 @@ print("✅ Transformaciones aplicadas sobre df_compras")
 # DETALLES
 # ==============================
 try:
-    df_detalles = spark.read.parquet("data/bronze/linio_bronze_detalles")
+    df_detalles = spark.read.parquet("/app/data/bronze/linio_bronze_detalles")
 
     df_detalles = (
         df_detalles
@@ -168,9 +168,11 @@ except Exception as e:
 # ESCRITURA EN CAPA SILVER (Parquet)
 # ==============================
 try:
-    df_compras.write.mode("overwrite").parquet("data/silver/linio_silver_compras")
-    df_detalles.write.mode("overwrite").parquet("data/silver/linio_silver_detalles")
-    print("✅ Archivos Parquet escritos en data/silver/")
+    df_compras.write.mode("overwrite").parquet("/app/data/silver/linio_silver_compras")
+    df_detalles.write.mode("overwrite").parquet("/app/data/silver/linio_silver_detalles")
+
+    print("✅ silver layer creada y poblada correctamente en Parquet.")
+
 except Exception as e:
     print("❌ Error al escribir en capa Silver:", e)
     raise e
