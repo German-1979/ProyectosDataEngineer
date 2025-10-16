@@ -1,28 +1,25 @@
+# Base Python 3.11 slim
 FROM python:3.11-slim
 
-# Instalamos Java necesario para Spark
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-       default-jdk \
-       wget \
-       curl \
-       ca-certificates \
-       gnupg \
-       lsb-release \
-    && rm -rf /var/lib/apt/lists/*
+# Instalar Java 21 (necesario para Spark)
+RUN apt-get update && \
+    apt-get install -y openjdk-21-jdk wget curl git && \
+    rm -rf /var/lib/apt/lists/*
 
-# Definimos variables de entorno para Spark
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-ENV SPARK_HOME=/opt/spark
-ENV PATH=$SPARK_HOME/bin:$PATH
+# Variables de entorno Java y Python
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+ENV PATH=$JAVA_HOME/bin:$PATH
+ENV PYTHONUNBUFFERED=1
 
-# Instalamos PySpark y dependencias Python
+# Crear directorio de la app
+WORKDIR /app
+
+# Copiar requirements e instalar dependencias
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiamos el proyecto
-WORKDIR /app
+# Copiar el código fuente
 COPY . /app
 
-# Comando por defecto para ejecutar
-CMD ["python", "scripts/run_all.py"]
+# Comando por defecto → ejecutar todo el pipeline
+CMD ["python3", "scripts/run_all.py"]

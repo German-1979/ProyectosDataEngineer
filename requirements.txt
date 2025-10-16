@@ -1,2 +1,2 @@
 pyspark==3.5.0
-pandas
+py4j==0.10.9.7

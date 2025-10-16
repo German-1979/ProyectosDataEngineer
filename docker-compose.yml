@@ -1,11 +1,17 @@
 version: "3.9"
+
 services:
   spark_app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: spark_app
     volumes:
-      - .:/app               # mantiene la sincronización de tu proyecto local
-    working_dir: /app
+      - ./data/raw:/app/data/raw
+      - ./data/bronze:/app/data/bronze
+      - ./data/silver:/app/data/silver
+      - ./data/gold:/app/data/gold
+      - ./scripts:/app/scripts
     environment:
-      - PYSPARK_PYTHON=python
-    command: python scripts/run_all.py  # ejecuta los 3 scripts en secuencia
+      - JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+    tty: true
