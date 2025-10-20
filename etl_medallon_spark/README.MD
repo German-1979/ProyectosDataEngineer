@@ -4,12 +4,12 @@ Este proyecto implementa un flujo ETL tipo medallón (Bronze → Silver → Gold
 Está pensado para pruebas y aprendizaje de pipelines de datos automatizados.
 
 
+
 ## Estructura del proyecto
 
 ![Diagrama del ETL](src/etl_medallon_spark.png)
 
 
----
 
 ## ⚙️ Requisitos
 
@@ -18,44 +18,51 @@ Está pensado para pruebas y aprendizaje de pipelines de datos automatizados.
 - **Docker** y **Docker Compose**  
 - **PySpark**, **py4j**, entre otras dependencias listadas en `requirements.txt`
 
-> Todos los recursos pueden correr en entorno local o VM en la nube para pruebas, considerando datos de tamaño moderado.
+Todos los recursos pueden correr en entorno local o VM en la nube para pruebas, considerando datos de tamaño moderado.
 
----
+
 
 ## 🏃‍♂️ Ejecución del proyecto
 
 ### 1. Construir la imagen Docker
 
-docker-compose build
+En la terminal de Visual Studio Code y en la raíz de tu proyecto, ejecuta: **docker-compose build**
 
 ### 2. Ejecutar el flujo ETL completo
 
-docker-compose up
+Luego y después de la construcción del docker.compose, ejecuta: **docker-compose up**
+
 
 Esto ejecutará automáticamente los scripts en el orden:
-01_bronze_layer.py → 02_silver_layer.py → 03_gold_layer.py
+**01_bronze_layer.py → 02_silver_layer.py → 03_gold_layer.py**
 
-### 3. Automatización con run_all.py
+
+
+### Automatización con run_all.py
 
 python src/run_all.py
 
 Esto garantiza que los scripts corran en secuencia, registrando logs y errores.
 
 
-📝 Buenas prácticas incluidas
 
-Arquitectura medallón: separación clara de capas de datos
-Dockerización: reproducibilidad y portabilidad
-Estandarización de scripts: ejecución secuencial y modular
-Control de versiones Git: ignorando datos pesados y temporales
-Documentación clara: README profesional para compartir y colaborar
+## 📝 Buenas prácticas incluidas
+
+- Arquitectura medallón: separación clara de capas de datos
+- Dockerización: reproducibilidad y portabilidad
+- Estandarización de scripts: ejecución secuencial y modular
+- Control de versiones Git: ignorando datos pesados y temporales
+- Documentación clara: README profesional para compartir y colaborar
 
 
-👤 Autor
+
+## 👤 Autor
 
 Germán – Ingeniero Civil Industrial, especialista en análisis de datos, procesos ETL y automatización de pipelines.
 
-📖 Referencias y recursos
+
+
+## 📖 Referencias y recursos
 
 PySpark Documentation
 Docker Documentation
