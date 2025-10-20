@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Entornos virtuales
+venv/
+.env/
+
+# Datos temporales
+/etl_medallon_spark/raw/
+etl_medallon_spark/bronze/
+etl_medallon_spark/silver/
+etl_medallon_spark/gold/
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Docker
+*.dockerignore
+docker-compose.override.yml
+
+# Sistema
+.DS_Store
+Thumbs.db
