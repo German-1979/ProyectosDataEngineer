@@ -6,21 +6,8 @@ Está pensado para pruebas y aprendizaje de pipelines de datos automatizados.
 
 ## Estructura del proyecto
 
-etl_medallon_spark/
-│
-├── data/                # Carpeta para datos (ignorados en Git)
-│ ├── raw/               # Datos originales
-│ ├── bronze/            # Datos procesados capa Bronze
-│ ├── silver/            # Datos procesados capa Silver
-│ └── gold/              # Datos finales (para análisis)
-│
-├── notebooks/           # Notebooks de prueba y desarrollo
-├── src/                 # Código Python de ETL
-│ └── run_all.py/        # Scripts por capa: 01_bronze, 02_silver, 03_gold
-├── Dockerfile           # Imagen Docker para ejecución
-├── docker-compose.yml   # Orquestación de contenedores
-├── requirements.txt     # Dependencias Python
-└── README.md            # Este archivo
+![Diagrama del ETL](src/etl_medallon_spark.png)
+
 
 ---
 
