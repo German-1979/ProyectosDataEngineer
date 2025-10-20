@@ -1,9 +1,9 @@
 import subprocess
 
 scripts = [
-    "scripts/01_bronze_layer.py",
-    "scripts/02_silver_layer.py",
-    "scripts/03_gold_layer.py"
+    "notebook/01_bronze_layer.py",
+    "notebook/02_silver_layer.py",
+    "notebook/03_gold_layer.py"
 ]
 
 for script in scripts:

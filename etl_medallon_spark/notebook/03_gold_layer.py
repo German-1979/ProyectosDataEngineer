@@ -17,9 +17,6 @@ print("🔹 Leyendo datos desde capa Silver...")
 df_compras = spark.read.parquet("/app/data/silver/linio_silver_compras")
 df_detalles = spark.read.parquet("/app/data/silver/linio_silver_detalles")
 
-print(f"Registros df_compras: {df_compras.count()}")
-print(f"Registros df_detalles: {df_detalles.count()}")
-
 # ===========================================
 # 2️⃣ Combinar df_compras y df_detalles (JOIN)
 # ===========================================

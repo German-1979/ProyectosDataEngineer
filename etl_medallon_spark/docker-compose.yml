@@ -1,0 +1,16 @@
+services:
+  spark_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spark_app
+    volumes:
+      - ./data/raw:/app/data/raw
+      - ./data/bronze:/app/data/bronze
+      - ./data/silver:/app/data/silver
+      - ./data/gold:/app/data/gold
+      - ./src:/app/src
+      - ./notebook:/app/notebook
+    environment:
+      - JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+    tty: true
